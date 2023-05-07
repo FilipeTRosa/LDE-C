@@ -1,0 +1,12 @@
+funções
+    crialista - ok
+    criamusica - ok
+    crianodo - ok
+    inseleLSE - ok
+    removeLSE - ok
+    imprimeLista - ok
+    imprimeNodo - ok
+    get - 
+    set 
+    modifica
+    
