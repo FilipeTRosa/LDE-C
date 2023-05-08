@@ -13,13 +13,34 @@ desc_Playlist * criaLista (void){
     return lista;
 }
 
-musica * criaMusica (char * titulo, char * artista, char * letra, int codigoMusica){
+musica * criaMusica (){
+    
+    //defincao de variaveis.
+        char titulo [256], artista [256], letra[256];
+        codMusica * codigoMusica = (codMusica*) malloc (sizeof(codMusica));
+        codigoMusica->valor = 1;
+    //preenchimento de variaveis.
+        printf("\nDigite o titulo da musica\n");
+            limpar_buffer();
+            fgets(titulo, 256, stdin);
+            printf("Digite o artista\n");
+            void limpar_buffer();
+            fgets(artista, 256, stdin);
+            printf("Digite a letra da musica\n");
+            void limpar_buffer();
+            fgets(letra, 256, stdin);
+            codigoMusica->valor++;
+
     musica * novaMusica = (musica *) malloc (sizeof(musica));
         strcpy(novaMusica->titulo, titulo);
         strcpy(novaMusica->artista, artista);
         strcpy(novaMusica->letra, letra);
-        novaMusica->codigo = codigoMusica;
+        novaMusica->codigo = codigoMusica->valor;
         novaMusica->execucoes = 0;
+    
+    printf("Musica criada com sucesso\n");
+    printf("\n Musica criada\n\n[Titulo] = %s[Artista] = %s[Letra] = %s\n\n", novaMusica->titulo, novaMusica->artista, novaMusica->letra);
+
     return novaMusica;
 }
 
@@ -31,10 +52,11 @@ nodo * criaNodo(void){
     return novoNodo;
 }
 
-void insereLDE (desc_Playlist * lista,musica * fmusica, nodo * fnodo, int posicao){
+void insereLDE (desc_Playlist * lista,musica * fmusica, int posicao){
 
     int i = 0;
     nodo *aux = lista->primeiramusica;
+    nodo * fnodo = criaNodo();
     fnodo->info = fmusica;
 
 
@@ -158,15 +180,20 @@ nodo * buscaNodo(desc_Playlist * lista, int posicao){
     return NULL;
 }
 
-void setMusica (desc_Playlist * lista, musica * fmusica){
-
+void setMusica (desc_Playlist * lista){
+    musica * fmusica = criaMusica();
     int posicao;
     printf("Digite a posicao da lista que deseja alterar. \n");
     scanf("%d", &posicao);
 
     nodo * aux = buscaNodo(lista, posicao);
-    aux->info = fmusica;
-
+    if (aux == NULL)
+    {
+        printf("Posicao invalida\n");
+        return;
+    }else{
+        aux->info = fmusica;
+    }
 }
 
 void setNodo (desc_Playlist * lista,nodo * novoNodo, int posicao){
@@ -182,22 +209,23 @@ void setNodo (desc_Playlist * lista,nodo * novoNodo, int posicao){
 
 
 void liberaPlaylist(desc_Playlist * lista){
+  
+    if(lista == NULL){
+        return;
+    }else{
+        nodo * aux = lista->primeiramusica;
+        while(aux != NULL){
+            nodo * proxNodo = aux->prox;
+            free(aux->info);
+            free(aux);
+            aux = proxNodo;
+        }
 
-    int i = 0;
-    nodo * aux = lista->primeiramusica;
-    
-    while(aux != NULL){
-        nodo * proxNodo = aux->prox;
-        free(aux->info);
-        free(aux);
-        aux = proxNodo;
+        lista->primeiramusica = NULL;
+        lista->ultimamusica = NULL;
+        lista->tamanho = 0;
+        free(lista);
     }
-
-    lista->primeiramusica = NULL;
-    lista->ultimamusica = NULL;
-    lista->tamanho = 0;
-    free(lista);
-
 }
 
 

@@ -20,9 +20,9 @@ int main (){
         printf("\n -*/-*/-*/ [MENU LDE] -*/-*/-*/ \n");
         printf("1 = Criar nova Lista: \n");
         printf("2 = Criar nova Musica:\n");
-        printf("3 = Criar novo Nodo\n");
-        printf("4 = Inserir na lista\n");
-        printf("5 = Imprimir lista\n");
+        printf("3 = Inserir na lista\n");
+        printf("4 = Imprimir lista\n");
+        printf("5 = Altera musica em uma posicao desejada\n");
         printf("6 = Remover um item da lista\n");
         printf("7 = Buscar uma posicao na lista.\n");
         printf("8 = Sair!\n");
@@ -31,32 +31,26 @@ int main (){
         switch(opcaoMenu){
 
             case 1:
+                //cria lista
                 lista = criaLista();
                 break;
             case 2:
-                printf("\nDigite o titulo da musica\n");
-                limpar_buffer();
-                fgets(titulo, 256, stdin);
-                printf("Digite o artista\n");
-                void limpar_buffer();
-                fgets(artista, 256, stdin);
-                printf("Digite a letra da musica\n");
-                void limpar_buffer();
-                fgets(letra, 256, stdin);
-                codigoMusica->valor++;
-                musica = criaMusica(titulo, artista, letra, codigoMusica->valor);
-                printf("\n Musica criada\n\n[Titulo] = %s\n[Artista] = %s\n[Letra] = %s\n\n", musica->titulo, musica->artista, musica->letra);
+                //cria musica
+                musica = criaMusica();
+                //printf("\n Musica criada\n\n[Titulo] = %s[Artista] = %s[Letra] = %s\n\n", musica->titulo, musica->artista, musica->letra);
                 break;
             case 3:
-                nodo = criaNodo();
-                break;
-            case 4: 
+                //insere
                 printf("Digite a posicao que deseja inserir a musica\n");
                 scanf("%d", &posicao);
-                insereLDE(lista, musica, nodo, posicao);
+                insereLDE(lista, musica, posicao);
+                break;
+            case 4: 
+                //imprime
+                imprimeLista(lista);
                 break;
             case 5:
-                imprimeLista(lista);
+                setMusica(lista);
                 break;
             case 6: 
                 printf("Digite a posição do item que deseja remover\n");
@@ -70,8 +64,12 @@ int main (){
                 printf("\nDigite a posicao que deseja buscar. \n");
                 scanf("%d", &posicao);
                 nodo = buscaNodo(lista, posicao);
-                printf("Item encontrado\n");
-                imprimeNodo(nodo);
+                if(nodo == NULL){
+                    break;
+                }else{
+                    printf("Item encontrado\n");
+                    imprimeNodo(nodo);
+                }
                 break;
             default:
                 break;       

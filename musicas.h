@@ -35,12 +35,13 @@ typedef struct desc_Playlist{
 – Imprime */
 
 desc_Playlist * criaLista (void); //ok
-musica * criaMusica (char * titulo, char * artista, char * letra, int codigoMusica); //ok
+musica * criaMusica (void); //ok
 nodo * criaNodo(void); //ok
-void insereLDE (desc_Playlist* lista,musica * fmusica, nodo* fnodo, int posicao);
+void insereLDE (desc_Playlist* lista,musica * fmusica, int posicao);
 nodo * removeLDE (desc_Playlist* lista, int posicao);
 void imprimeLista(desc_Playlist* lista);
 void imprimeNodo(nodo * fnodo);
 void limpar_buffer();
 nodo * buscaNodo(desc_Playlist * lista, int posicao);
 void liberaPlaylist(desc_Playlist * lista);
+void setMusica(desc_Playlist * lista);
