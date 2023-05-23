@@ -116,7 +116,7 @@ void imprimeLista(desc_Playlist * lista){
 
     while (i<lista->tamanho)
     {
-        printf("\n-*/-*/-*/-*/-*/\n");
+        //printf("\n-*/-*/-*/-*/-*/\n");
         printf("\n[Elemento] = %d\n", i);
         imprimeNodo(aux);
         aux = aux->prox;
@@ -126,7 +126,7 @@ void imprimeLista(desc_Playlist * lista){
 
 void imprimeNodo(nodo * aux){
     
-    printf("[Titulo] = %s[Artista] = %s[Letra] = %s[Codigo] = %d\n[Execucoes] = %d \n ", aux->info->titulo, aux->info->artista, aux->info->letra, aux->info->codigo, aux->info->execucoes);
+    printf("[Titulo] = %s[Artista] = %s[Letra] = %s[Codigo] = %d [Execucoes] = %d ", aux->info->titulo, aux->info->artista, aux->info->letra, aux->info->codigo, aux->info->execucoes);
 
 }
 
@@ -142,12 +142,34 @@ nodo * removeLDE (desc_Playlist* lista, int posicao){
         return NULL;
     }else{
         nodo * aux = buscaNodo(lista, posicao);
-        aux->ant->prox = aux->prox;
-        aux->prox->ant = aux->ant;
-        lista->tamanho--;
-        return aux;
-    }
-    return NULL;
+        if(aux->prox == NULL && lista->tamanho >1){// aux = ultimo
+            lista->ultimamusica = aux->ant;
+            aux->ant->prox = NULL;
+            aux->ant = NULL;
+            lista->tamanho--;
+            return aux;
+        }else{
+            if(aux->ant == NULL && lista->tamanho > 1){
+                lista->primeiramusica = aux->prox;
+                aux->prox->ant = NULL;
+                aux->prox = NULL;
+                lista->tamanho--;
+                return aux;
+            }else{
+                if(lista->tamanho == 1){
+                    lista->primeiramusica = NULL;
+                    lista->tamanho--;
+                    return aux;
+                }else{
+                        aux->ant->prox = aux->prox;
+                        aux->prox->ant = aux->ant;
+                        lista->tamanho--;
+                        return aux;
+                }
+            }
+        }
+   }
+        return NULL;
 }
 
 
