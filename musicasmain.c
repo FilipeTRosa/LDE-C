@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include "musicas.h"
-
+#include "pilha.h"
 
 int main (){
 
     desc_Playlist * lista = NULL;
+    desc_Stack * stack = NULL;
     nodo * nodo = NULL;
     musica * musica = NULL;
     codMusica * codigoMusica = (codMusica*) malloc (sizeof(codMusica));

@@ -30,8 +30,9 @@ musica * criaMusica (){
             void limpar_buffer();
             fgets(letra, 256, stdin);
             codigoMusica->valor++;
-
+    //alocação de memoria
     musica * novaMusica = (musica *) malloc (sizeof(musica));
+        //preenchimento struct musica
         strcpy(novaMusica->titulo, titulo);
         strcpy(novaMusica->artista, artista);
         strcpy(novaMusica->letra, letra);
@@ -40,7 +41,7 @@ musica * criaMusica (){
     
     printf("Musica criada com sucesso\n");
     printf("\n Musica criada\n\n[Titulo] = %s[Artista] = %s[Letra] = %s\n\n", novaMusica->titulo, novaMusica->artista, novaMusica->letra);
-
+    
     return novaMusica;
 }
 
