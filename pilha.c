@@ -32,9 +32,44 @@ desc_Stack * push (nodo * fnodo, desc_Stack * fstack){
     }
 
 }
-desc_Stack * pop (desc_Stack * fstack){}
-nodo * top (desc_Stack * fstack){}
-int empty (desc_Stack * fstack){}
+desc_Stack * pop (desc_Stack * fstack){
+   
+    if (empty(fstac))
+    {
+        printf("Lista vazia");
+        return flista;     
+    }else
+    {
+        nodo * aux = fstack->first_stack;
+        fstack->first_stack = aux->prox;
+        fstack->lenght--;
+        return fstack;
+    }
+    
+}
+nodo * top (desc_Stack * fstack){
+    return fstack->first_stack;    
+}
+int empty (desc_Stack * fstack){
+    if (fstack->lenght == 0)
+    {
+        return 1;
+    }else
+    {
+        return 0;
+    }
+}
 void makenull (desc_Stack * fstack){}
-int lenght (desc_Stack * fstack){}
-void printStack (desc_Stack * fStack){}
+
+int lenght (desc_Stack * fstack){
+    return fstack->lenght;
+}
+void printStack (desc_Stack * fStack){
+    nodo * aux = fstack->first_stack;
+    while (aux != NULL)
+    {
+        imprimenodo(aux);
+        aux = aux->prox;
+    }
+    
+}
