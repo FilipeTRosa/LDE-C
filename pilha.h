@@ -19,11 +19,11 @@ typedef struct desc_Stack
 }desc_Stack;
 
 
-desc_Stack * createStack (desc_Stack * fstack);
-desc_Stack * push (nodo * fnodo, desc_Stack * fstack);
-desc_Stack * pop (desc_Stack * fstack);
-nodo * top (desc_Stack * fstack);
-int empty (desc_Stack * fstack);
-void makenull (desc_Stack * fstack);
-int lenght (desc_Stack * fstack);
-void printStack (desc_Stack * fStack);
+desc_Stack * createStack ();
+desc_Stack * pushStack (nodo * fnodo, desc_Stack * fstack);
+desc_Stack * popStack (desc_Stack * fstack);
+nodo * topStack (desc_Stack * fstack);
+int emptyStack (desc_Stack * fstack);
+void makenullStack (desc_Stack * fstack);
+int lenghtStack (desc_Stack * fstack);
+void printStack (desc_Stack * fstack);

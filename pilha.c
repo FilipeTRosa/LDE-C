@@ -7,7 +7,7 @@
 /* funcoes da pilha/stack */
 
 
-desc_Stack * createStack (desc_Stack * fstack){
+desc_Stack * createStack (){
     desc_Stack * stack = (desc_Stack *) malloc (sizeof(desc_Stack));
 
     stack->first_stack = NULL;
@@ -16,7 +16,7 @@ desc_Stack * createStack (desc_Stack * fstack){
 
     return stack;
 }
-desc_Stack * push (nodo * fnodo, desc_Stack * fstack){
+desc_Stack * pushStack (nodo * fnodo, desc_Stack * fstack){
 
     if(empty(fstack)){//pilha vazia
         fstack->first_stack = fnodo;
@@ -32,12 +32,12 @@ desc_Stack * push (nodo * fnodo, desc_Stack * fstack){
     }
 
 }
-desc_Stack * pop (desc_Stack * fstack){
+desc_Stack * popStack (desc_Stack * fstack){
    
-    if (empty(fstac))
+    if (empty(fstack))
     {
         printf("Lista vazia");
-        return flista;     
+        return fstack;     
     }else
     {
         nodo * aux = fstack->first_stack;
@@ -47,7 +47,7 @@ desc_Stack * pop (desc_Stack * fstack){
     }
     
 }
-nodo * top (desc_Stack * fstack){
+nodo * topStack (desc_Stack * fstack){
     return fstack->first_stack;    
 }
 int empty (desc_Stack * fstack){
@@ -59,12 +59,15 @@ int empty (desc_Stack * fstack){
         return 0;
     }
 }
-void makenull (desc_Stack * fstack){}
+void makenullStack (desc_Stack * fstack){
+    fstack->first_stack = NULL;
+    fstack->lenght = 0;
+}
 
-int lenght (desc_Stack * fstack){
+int lenghtStack (desc_Stack * fstack){
     return fstack->lenght;
 }
-void printStack (desc_Stack * fStack){
+void printStackStack (desc_Stack * fstack){
     nodo * aux = fstack->first_stack;
     while (aux != NULL)
     {
