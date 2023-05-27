@@ -85,9 +85,24 @@ nodo * dequeue (desc_queue * fqueue){
     
 }
 
-int lenghtQueue (desc_queue * fqueue){}
+int lenghtQueue (desc_queue * fqueue){
 
-void showQueue (desc_queue * fqueue){}
+    return fqueue->tamanho;
+    
+}
+
+void showQueue (desc_queue * fqueue){
+
+    nodo * aux = fqueue->head;
+
+    while (aux->prox != NULL)
+    {   
+        imprimeNodo(aux);
+        aux = aux->prox;
+    }
+    
+
+}
 
 
 
