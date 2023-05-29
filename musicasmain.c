@@ -104,7 +104,7 @@ int main (){
                 printf("4 - [POP] - Apaga o elemento do topo\n");
                 printf("5 - [EMPTY] - Veririfcar se pilha está vazia\n");
                 printf("6 - [MAKENUL] - Elimina todos os elementos da pilha\n");
-                printf("7 - [LENGHT] - Retorna o tamanho da pilha\n");
+                printf("7 - [LENGTH] - Retorna o tamanho da pilha\n");
                 printf("8 - [PRINT] - Imprimir pilha\n");
                 printf("9 - Sair\n");
                 setbuf(stdin, NULL);
@@ -137,7 +137,7 @@ int main (){
                     // verifica se está vazia a pilha / stack
                     if (emptyStack)
                     {
-                        printf("A pilha não está vazia e seu tamanho eh %d. \n", stack->lenght);   
+                        printf("A pilha não está vazia e seu tamanho eh %d. \n", stack->length);   
                         
                     }else{
                         printf("A pilha está vazia\n");
@@ -149,7 +149,7 @@ int main (){
                     break;
                 case 7:
                     // retorna o tamanho da pilha / stack
-                    printf("O tamanho da pilha eh %d. \n", lenghtStack(stack));
+                    printf("O tamanho da pilha eh %d. \n", lengthStack(stack));
                     break;
                 case 8:
                     // imprimir pilha / stack

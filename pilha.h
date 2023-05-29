@@ -15,7 +15,7 @@ typedef struct desc_Stack
 {
      nodo * first_stack;
      nodo * last_stack;
-    int lenght;
+    int length;
 
 }desc_Stack;
 
@@ -26,5 +26,5 @@ desc_Stack * popStack (desc_Stack * fstack);
 nodo * topStack (desc_Stack * fstack);
 int emptyStack (desc_Stack * fstack);
 void makenullStack (desc_Stack * fstack);
-int lenghtStack (desc_Stack * fstack);
+int lengthStack (desc_Stack * fstack);
 void printStack (desc_Stack * fstack);

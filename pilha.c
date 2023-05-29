@@ -12,13 +12,13 @@ desc_Stack * createStack (){
 
     stack->first_stack = NULL;
     stack->last_stack = NULL;
-    stack->lenght = 0;
+    stack->length = 0;
 
     return stack;
 }
 
 int empty (desc_Stack * fstack){
-    if (fstack->lenght == 0)
+    if (fstack->length == 0)
     {
         return 1;
     }else
@@ -32,13 +32,13 @@ desc_Stack * pushStack (desc_Stack * fstack, nodo * fnodo){
     if(empty(fstack)){//pilha vazia
         fstack->first_stack = fnodo;
         fstack->last_stack = fnodo;
-        fstack->lenght ++;
+        fstack->length ++;
         return fstack;
     }else{
         nodo * aux = fstack->first_stack;
         fnodo->prox = aux;
         fstack->first_stack = fnodo;
-        fstack->lenght++;
+        fstack->length++;
         return fstack;
     }
 
@@ -53,7 +53,7 @@ desc_Stack * popStack (desc_Stack * fstack){
     {
         nodo * aux = fstack->first_stack;
         fstack->first_stack = aux->prox;
-        fstack->lenght--;
+        fstack->length--;
         return fstack;
     }
     
@@ -64,11 +64,11 @@ nodo * topStack (desc_Stack * fstack){
 
 void makenullStack (desc_Stack * fstack){
     fstack->first_stack = NULL;
-    fstack->lenght = 0;
+    fstack->length = 0;
 }
 
-int lenghtStack (desc_Stack * fstack){
-    return fstack->lenght;
+int lengthStack (desc_Stack * fstack){
+    return fstack->length;
 }
 void printStack(desc_Stack * fstack){
     nodo * aux = fstack->first_stack;
