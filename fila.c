@@ -29,7 +29,24 @@ void * resetQueue (desc_queue * fqueue){
      fqueue->tamanho = 0;
 }
 
-desc_queue * deleteQueue (desc_queue * fqueue){}
+desc_queue * deleteQueue (desc_queue * fqueue){
+
+    if (fqueue->tamanho == 0)
+    {
+        return fqueue;
+    }
+    else
+    {
+        nodo * aux = fqueue->head;
+        while(aux != NULL){
+            nodo * proxNodo = aux->prox;
+            free(aux->info);
+            free(aux);
+            aux = proxNodo;
+        }
+        resetQueue(fqueue);
+    }
+}
 
 int emptyQueue (desc_queue * fqueue){
     if (fqueue->tamanho == 0)
@@ -73,16 +90,19 @@ nodo * dequeue (desc_queue * fqueue){
         return fqueue->head;
     }else
     {
-        nodo * fnodo = fqueue->head;
+        nodo * aux = fqueue->head;
        if (fqueue->tamanho == 1)
        {
             resetQueue(fqueue);
-            return fnodo;
-       }
-               
+            return aux;
+       }else
+       {
+           fqueue->head = aux->prox;
+           aux->prox->ant = NULL;
+           fqueue->tamanho--;
+           return aux;          
+       }              
     }
-    
-    
 }
 
 int lenghtQueue (desc_queue * fqueue){
@@ -95,12 +115,13 @@ void showQueue (desc_queue * fqueue){
 
     nodo * aux = fqueue->head;
 
-    while (aux->prox != NULL)
+    while (aux != NULL)
     {   
+        printf("\n*-----------------*\n");
         imprimeNodo(aux);
         aux = aux->prox;
     }
-    
+        printf("\n*-----------------*\n");
 
 }
 

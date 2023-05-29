@@ -12,11 +12,10 @@ int main (){
     desc_queue * queue = NULL;
     nodo * nodo = NULL;
     musica * musica = NULL;
-    codMusica * codigoMusica = (codMusica*) malloc (sizeof(codMusica));
-    codigoMusica->valor = 1;
+    
 
     char titulo [256], artista [256], letra[256];
-    int opcaoMenu = 0, posicao = 0, menuPrincipal = 0, menuStack = 0;
+    int opcaoMenu = 0, posicao = 0, menuPrincipal = 0, menuStack = 0, menuQueue = 0;
 
     do //inicio menu seleção de menu
     {
@@ -98,12 +97,136 @@ int main (){
             //Pilha / Stack
             do
             {
-                /* code */
-            } while (menuStack != 5);
+                printf("\nBem vindo ao Menu de Pilha/Stack!\n");
+                printf("1 - Cria Pilha. \n");
+                printf("2 - [PUSH] - Inserir na Pilha. \n");
+                printf("3 - [TOP] - Retorna Elemento do topo \n");
+                printf("4 - [POP] - Apaga o elemento do topo\n");
+                printf("5 - [EMPTY] - Veririfcar se pilha está vazia\n");
+                printf("6 - [MAKENUL] - Elimina todos os elementos da pilha\n");
+                printf("7 - [LENGHT] - Retorna o tamanho da pilha\n");
+                printf("8 - [PRINT] - Imprimir pilha\n");
+                printf("9 - Sair\n");
+                setbuf(stdin, NULL);
+                scanf("%d", &menuStack);
+
+                switch (menuStack)
+                {
+                case 1:
+                    // cria pilha / stack
+                    stack = createStack();
+                    break;
+                case 2:
+                    // Insere na pilha / stack
+                    musica = criaMusica();
+                    nodo = criaNodo();
+                    nodo->info = musica;
+                    stack = pushStack(stack, nodo);
+                    break;
+                case 3:
+                    // retorna o elemento do topo da pilha / stack
+                    nodo = topStack(stack);
+                    printf("A musica retornada foi: \n");
+                    imprimeNodo(nodo);
+                    break;
+                case 4:
+                    // Elimina o elemento no topo da pilha / stack
+                    stack = popStack(stack);
+                    break;
+                case 5:
+                    // verifica se está vazia a pilha / stack
+                    if (emptyStack)
+                    {
+                        printf("A pilha não está vazia e seu tamanho eh %d. \n", stack->lenght);   
+                        
+                    }else{
+                        printf("A pilha está vazia\n");
+                    }
+                    break;
+                case 6:
+                    // Eliminar os elementos da pilha / stack
+                    makenullStack(stack);
+                    break;
+                case 7:
+                    // retorna o tamanho da pilha / stack
+                    printf("O tamanho da pilha eh %d. \n", lenghtStack(stack));
+                    break;
+                case 8:
+                    // imprimir pilha / stack
+                    printStack(stack);
+                    break;
+                default:
+                    break;
+                }
+            } while (menuStack != 9);
             
             break; // Fim Stack
         case 3:
             //Fila / Queue
+            do
+            {
+                printf("\nBem vindo ao Menu de Pilha/Stack!\n");
+                printf("1 - Cria FILA. \n");
+                printf("2 - [ENQUEUE] - Inserir na Fila. \n");
+                printf("3 - [DEQUEUE] - Retorna e Remove o elemento no inicio da Fila\n");
+                printf("4 - [DELETE] - Apaga totos os elementos da Fila\n");
+                printf("5 - [EMPTY] - Veririfcar se Fila está vazia\n");
+                printf("6 - [LENGHT] - Retorna o tamanho da pilha\n");
+                printf("7 - [SHOW QUEUE] - Imprimir Fila\n");
+                printf("8 - Sair\n");
+                setbuf(stdin, NULL);
+                scanf("%d", &menuQueue);
+
+                switch (menuQueue)
+                {
+                case 1:
+                    /* Cria Fila / Queue */
+                    queue = createQueue();
+                    break;
+                case 2:
+                    /* Insere na Fila / Queue */
+                    musica = criaMusica();
+                    nodo = criaNodo();
+                    nodo->info = musica;
+                    queue = enqueue(queue, nodo);
+                    break;
+                case 3:
+                    /* Retorna e remove o elemento no inicio da Fila / Queue */
+                    nodo = dequeue(queue);
+                    printf("A musica retornada e excuila foi: \n");
+                    imprimeNodo(nodo);
+                    break;
+                case 4:
+                    /* Deleta a Fila / Queue */
+                    
+                    break;
+                case 5:
+                    /* Retorna verdadeiro para fila vazia*/
+                    if (emptyQueue(queue))
+                    {
+                        printf("A lista está vazia \n");
+                    }
+                    else
+                    {
+                        printf("A lista não está vazia\n");
+                        printf("Tamanho: %d\n", queue->tamanho);
+                    }  
+                    break;
+                case 6:
+                    /* Retorna o tamanho da fila*/
+                    printf("\nTamanho da fila: %d\n", queue->tamanho);
+                    break;
+                case 7:
+                    /* Imprime a Fila */
+                    showQueue(queue);
+                    break;
+                default:
+                    break;
+                }
+
+
+            } while (menuQueue != 8);
+            
             break; //Fim Queue
         default:
             break;

@@ -1,4 +1,5 @@
-#include "musicas.h"
+
+
 /*
 – CriaPilha - cria Desc_Pilha
 – PUSH (x, S) - coloca um elemento no topo da pilha
@@ -12,15 +13,15 @@
 
 typedef struct desc_Stack
 {
-    nodo * first_stack;
-    nodo * last_stack;
+     nodo * first_stack;
+     nodo * last_stack;
     int lenght;
 
 }desc_Stack;
 
 
 desc_Stack * createStack ();
-desc_Stack * pushStack (nodo * fnodo, desc_Stack * fstack);
+desc_Stack * pushStack (desc_Stack * fstack, nodo * fnodo) ;
 desc_Stack * popStack (desc_Stack * fstack);
 nodo * topStack (desc_Stack * fstack);
 int emptyStack (desc_Stack * fstack);

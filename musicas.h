@@ -7,11 +7,13 @@ typedef struct musica{
     int execucoes;
 }musica;
 
-typedef struct codMusica
+/*typedef struct codMusica
 {
     int valor;
 }codMusica;
+*/
 
+static int codigoMusica = 0;//Aumenta para cada musica criada independente da TAD que cria.
 
 typedef struct nodo{
     struct nodo *prox;
@@ -20,10 +22,10 @@ typedef struct nodo{
 }nodo;
 
 typedef struct desc_Playlist{
-    struct desc_Playlist * prox;
-    struct desc_Playlist * ant;
-    struct nodo * primeiramusica;
-    struct nodo * ultimamusica;
+     struct desc_Playlist * prox;
+     struct desc_Playlist * ant;
+     nodo * primeiramusica;
+     nodo * ultimamusica;
     int tamanho;
 }desc_Playlist;
 

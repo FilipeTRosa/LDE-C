@@ -1,5 +1,4 @@
-#include "musicas.h"
-#include "pilha.h"
+
 
 
 /*Funções a serem implementadas em fila
